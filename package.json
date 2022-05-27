@@ -1,7 +1,11 @@
 {
   "name": "@clickbar/utils",
   "version": "0.0.1",
-  "description": "",
+  "description": "Opinionated utilities used at @clickbar",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clickbar/utils.git"
+  },
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "index.d.ts",
