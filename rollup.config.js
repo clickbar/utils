@@ -5,15 +5,11 @@ import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import alias from '@rollup/plugin-alias'
 
-const entries = [
-  'src/index.ts',
-]
+const entries = ['src/index.ts']
 
 const plugins = [
   alias({
-    entries: [
-      { find: /^node:(.+)$/, replacement: '$1' },
-    ],
+    entries: [{ find: /^node:(.+)$/, replacement: '$1' }],
   }),
   resolve({
     preferBuiltins: true,
@@ -26,7 +22,7 @@ const plugins = [
 ]
 
 export default [
-  ...entries.map(input => ({
+  ...entries.map((input) => ({
     input,
     output: [
       {
@@ -41,15 +37,13 @@ export default [
     external: [],
     plugins,
   })),
-  ...entries.map(input => ({
+  ...entries.map((input) => ({
     input,
     output: {
       file: input.replace('src/', '').replace('.ts', '.d.ts'),
       format: 'esm',
     },
     external: [],
-    plugins: [
-      dts({ respectExternal: true }),
-    ],
+    plugins: [dts({ respectExternal: true })],
   })),
 ]
