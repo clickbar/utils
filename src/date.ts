@@ -27,6 +27,7 @@ export function toGermanDateString(date: Dateable): string {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
+    timeZone: 'Europe/Berlin',
   })
 }
 
@@ -34,7 +35,11 @@ export function toGermanDateString(date: Dateable): string {
  * Return a german time string, e.g. "18:00".
  */
 export function toGermanTimeString(date: Dateable): string {
-  return toDate(date).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })
+  return toDate(date).toLocaleTimeString('de-DE', {
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Europe/Berlin',
+  })
 }
 
 /**
