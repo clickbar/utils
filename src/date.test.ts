@@ -35,8 +35,7 @@ it('toGermanTimeString', () => {
   expect(toGermanTimeString(date)).toBe('01:00')
 })
 
-it('toUtcTimeString', () => {
-  // this is 01:00 because of the timezone offset
+it('toGermanTimeString with UTC timezone', () => {
   const date = toDate('2020-01-01T00:00:00.000Z')
   expect(toUtcTimeString(date)).toBe('00:00')
 })
