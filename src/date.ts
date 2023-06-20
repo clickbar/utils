@@ -20,67 +20,43 @@ export function toDate(date: Dateable): Date {
 }
 
 /**
- * Return a german date string, e.g. "31.12.2019".
+ * Return a german date string, e.g. "31.12.2019". Defaults to Europe/Berlin timezone.
  */
-export function toGermanDateString(date: Dateable): string {
+export function toGermanDateString(date: Dateable, options?: Intl.DateTimeFormatOptions): string {
   return toDate(date).toLocaleDateString('de-DE', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
     timeZone: 'Europe/Berlin',
+    ...options,
   })
 }
 
 /**
- * Return a utc date string in german style, e.g. "31.12.2019".
+ * Return a german time string, e.g. "18:00". Defaults to Europe/Berlin timezone.
  */
-export function toUtcDateString(date: Dateable): string {
-  return toDate(date).toLocaleDateString('de-DE', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    timeZone: 'UTC',
-  })
-}
-
-/**
- * Return a german time string, e.g. "18:00".
- */
-export function toGermanTimeString(date: Dateable): string {
+export function toGermanTimeString(date: Dateable, options?: Intl.DateTimeFormatOptions): string {
   return toDate(date).toLocaleTimeString('de-DE', {
     hour: '2-digit',
     minute: '2-digit',
     timeZone: 'Europe/Berlin',
+    ...options,
   })
 }
 
 /**
- * Return an utc time string in german style, e.g. "16:00".
+ * Return a german date and time string, e.g. "31.12.2019, 18:00". Defaults to Europe/Berlin timezone.
  */
-export function toUtcTimeString(date: Dateable): string {
-  return toDate(date).toLocaleTimeString('de-DE', {
+export function toGermanString(date: Dateable, options?: Intl.DateTimeFormatOptions): string {
+  return toDate(date).toLocaleString('de-DE', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-    timeZone: 'UTC',
+    timeZone: 'Europe/Berlin',
+    ...options,
   })
-}
-
-/**
- * Return a german date and time string, e.g. "31.12.2019, 18:00".
- */
-export function toGermanString(date: Dateable): string {
-  date = toDate(date)
-
-  return `${toGermanDateString(date)}, ${toGermanTimeString(date)}`
-}
-
-/**
- * Return an utc date and time string in german style, e.g. "31.12.2019, 18:00".
- */
-export function toUtcString(date: Dateable): string {
-  date = toDate(date)
-
-  return `${toUtcDateString(date)}, ${toUtcTimeString(date)}`
 }
 
 /**
