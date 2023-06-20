@@ -20,35 +20,43 @@ export function toDate(date: Dateable): Date {
 }
 
 /**
- * Return a german date string, e.g. "31.12.2019".
+ * Return a german date string, e.g. "31.12.2019". Defaults to Europe/Berlin timezone.
  */
-export function toGermanDateString(date: Dateable): string {
+export function toGermanDateString(date: Dateable, options?: Intl.DateTimeFormatOptions): string {
   return toDate(date).toLocaleDateString('de-DE', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
     timeZone: 'Europe/Berlin',
+    ...options,
   })
 }
 
 /**
- * Return a german time string, e.g. "18:00".
+ * Return a german time string, e.g. "18:00". Defaults to Europe/Berlin timezone.
  */
-export function toGermanTimeString(date: Dateable): string {
+export function toGermanTimeString(date: Dateable, options?: Intl.DateTimeFormatOptions): string {
   return toDate(date).toLocaleTimeString('de-DE', {
     hour: '2-digit',
     minute: '2-digit',
     timeZone: 'Europe/Berlin',
+    ...options,
   })
 }
 
 /**
- * Return a german date and time string, e.g. "31.12.2019, 18:00".
+ * Return a german date and time string, e.g. "31.12.2019, 18:00". Defaults to Europe/Berlin timezone.
  */
-export function toGermanString(date: Dateable): string {
-  date = toDate(date)
-
-  return `${toGermanDateString(date)}, ${toGermanTimeString(date)}`
+export function toGermanString(date: Dateable, options?: Intl.DateTimeFormatOptions): string {
+  return toDate(date).toLocaleString('de-DE', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Europe/Berlin',
+    ...options,
+  })
 }
 
 /**
